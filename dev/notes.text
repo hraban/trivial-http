@@ -1,0 +1,12 @@
+Correct binary behavior on CLISP
+
+I'm not really sure why that would be necessary. Right now trivial-http is sending a raw CR, LF pair; I'm not sure what clisp did to break this. -- Brian Mastenbrook 
+
+Uh, you're doing character output, so clisp will have an external format on your character output stream. That external format, on Windows, is likely to convert a #\Newline character to CRLF; I suspect that there is also an identity where #\Newline is #\Linefeed, so Brian's +crlf+ ends up sending out CRLFLF. In Summary: HTTP is a binary protocol. -- Christophe 
+
+
+-- Paste 12803 : handling headers
+
+-- leaking file descriptors
+
+-- image support
