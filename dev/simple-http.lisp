@@ -1,6 +1,6 @@
-(defpackage :simple-http
-  (:use :cl :trivial-sockets)
-  (:nicknames :shttp)
+(defpackage #:simple-http
+  (:use #:cl #:trivial-sockets)
+  (:nicknames #:shttp)
   (:export #:http-get 
            #:http-post 
            #:http-head
@@ -27,7 +27,7 @@
   (:documentation 
    "simple-http is a simple networking library for doing HTTP POST and GET over a socket interface. It establishes a package simple-HTTP, also called SHTTP, from which the following functions are exported: http-get, http-post, escape-url-query and http-head."))
 
-(in-package :simple-http)
+(in-package #:simple-http)
 
 ;;; ---------------------------------------------------------------------------
 ;;; constants
