@@ -5,51 +5,45 @@
 (html-file-page ("index")
   (html
    (:HEAD (:TITLE "Simple-HTTP")
-          (generate-shared-headers)
-          )
+          (generate-shared-headers))
    (:BODY
     (generate-two-line-header
-     "Simple-HTTP" "Less trivial, still simple")
+     "Simple-HTTP" "Not trivial, still simple")
     
     ((:DIV :CLASS "contents")
      (generate-system-sidebar)
      
      ((:DIV :CLASS "system-description")
-       (:H3 "What it is")
-       (:P "Simple-HTTP is a fork of Trival-HTTP that adds several features and bug fixes and works more the way I'd like it to. Where it's functionality overlaps with Trivial-HTTP, it should perform exactly the same.")
+      (:H3 "What it is")
+      (:P "Simple-HTTP is a fork of Trival-HTTP that adds several features and bug fixes and works more the way I'd like it to. Where it's functionality overlaps with Trivial-HTTP, it performs exactly the same.")
+      (:P "Simple-HTTP has functions for:"
+        (:ul (:li "HTTP Get")
+             (:li "HTTP Post")
+             (:li "HTTP Resolve - resolve 301 and 302 redirects")
+             (:li "HTTP Download - grab stuff via HTTP")))
+             
        ((:A :id "mailing-lists"))
-       (:h3 "Mailing Lists")
-       (:P "ASDF-Binary-Locations isn't a separate project at this point but if you have
-questions, comments or concerns, just drop " (rw:link :mail-gwking :title "Gary King") 
+       (:h3 "Mailing Lists and Support")
+       (:P "Simple-HTTP doesn't have a mailing list yet but if you have
+          questions, comments or concerns, just drop " (rw:link :mail-gwking :title "Gary King") 
            " a line.")
        
        ((:A :id "downloads"))
        (:H3 "Where is it")
        (:P "A " (rw:link :darcs) " repository is available. The darcs command is listed below:")
        
-       (:PRE " darcs get http://common-lisp.net/project/cl-containers/asdf-binary-locations/darcs/asdf-binary-locations ") 
+       (:PRE "darcs get http://www.enterpriselisp.com/software/simple-http/darcs/simple-http") 
        
-       (:P "ASDF-Binary-Locations is also " (rw:link :asdf-install :title "ASDF installable") ". Its CLiki home is right " (rw:link :asdf-binary-locations-cliki :title "where") " you'd expect.")
+       (:P "Simple-HTTP is also " (rw:link :asdf-install :title "ASDF installable") ". Its CLiki home is right " (rw:link :simple-http-cliki :title "where") " you'd expect.")
        
        (:P "There's also a handy " (rw:link :asdf-binary-locations-package :title "gzipped tar file") ".")
-       
-       (:H3 "Notes and Issues")
-       (:UL
-        (:LI "SBCL ships with several included ASDF libraries. Unless you tell it not to, ABL will try to place the compiled files for these into new directories which may fail due to directory permissions. You can tell ABL to not mess with the SBCL files by added something like the following to your ~/.sbclrc file"
-             (:PRE  
-";; force SBCL things to stay in SBCL
-\(defvar asdf::*source-to-target-mappings*
-  '\(\(\"/usr/local/lib/sbcl/\" nil\)\)\)")))
        
        ((:A :id "news"))
        (:H3 "What is happening")
        ((:TABLE :CLASS "system-news") 
         (:tr
-         (:th "5 June 2006")
-         (:td "Thanks to Peter Seibel and Robert Goldman for helping to push out a bunch of useful improvements."))
-        (:TR
-         (:TH "19 Dec 2005")
-         (:TD "Created by munging great code together and added a bit of spice.")))))
+         (:th "6 June 2006")
+         (:td "Launched the project")))))
     
     
     ((:DIV :CLASS "footer")
