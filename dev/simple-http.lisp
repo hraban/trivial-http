@@ -132,7 +132,7 @@
 		   (return-from got (list response headers stream)))
 		 (when stream 
 		   (close stream))
-		 (setf url (cdr (assoc :location headers))))))
+		 (setf url (header-value :location headers)))))
 	(when (>= response 400)
 	  (when stream (close stream))
 	  (when signal-error?
@@ -151,7 +151,7 @@
                       (http-resolve url)
     (declare (ignore response))
     (unwind-protect
-    (let ((length (parse-integer (or (cdr (assoc :content-length headers)) "")
+    (let ((length (parse-integer (or (header-value :content-length headers) "")
 				 :junk-allowed t))
           (total 0))
       #+:clisp (setf (stream-element-type stream)
