@@ -1,29 +1,31 @@
 (defpackage #:simple-http
   (:use #:cl #:trivial-sockets)
   (:nicknames #:shttp)
-  (:export #:http-get 
-           #:http-post 
-           #:http-head
-	   #:http-download
-           #:http-resolve
-           #:escape-url-query
+  (:export
+   #:*http-debug*
+   #:http-get 
+   #:http-post 
+   #:http-head
+   #:http-download
+   #:http-resolve
+   #:escape-url-query
            
-           #:header-value
-           #:header-pair
+   #:header-value
+   #:header-pair
            
-           ;; conditions
-           #:download-error
-           #:download-url
-	   #:download-command
-           #:download-response
+   ;; conditions
+   #:download-error
+   #:download-url
+   #:download-command
+   #:download-response
 
-	   #:incompatible-stream-error
-	   #:stream-from
-	   #:stream-to
+   #:incompatible-stream-error
+   #:stream-from
+   #:stream-to
 
-	   #:mismatched-download-size-error
-	   #:download-length-claimed
-	   #:download-length-downloaded)
+   #:mismatched-download-size-error
+   #:download-length-claimed
+   #:download-length-downloaded)
   (:documentation 
    "simple-http is a simple networking library for doing HTTP POST and GET over a socket interface. It establishes a package simple-HTTP, also called SHTTP, from which the following functions are exported: http-get, http-post, escape-url-query and http-head."))
 
@@ -39,6 +41,8 @@
       (concatenate 'string
                    (string (code-char 13))
                    (string (code-char 10)))))
+
+(defvar *http-debug* nil)
 
 ;;; ---------------------------------------------------------------------------
 ;;; conditions
@@ -105,17 +109,24 @@
      (response-read-headers stream)
      stream)))
 
-(defun http-post (url content-type content)
+(defun http-post (url content-type content &key headers (debug? *http-debug*))
   "given a URL, a MIME content type, and the content as a character stream, POST to the URL and return the list of three elements as described for HTTP-GET."
   (let* ((host (url-host url))
          (port (url-port url))
-         (stream (open-stream host port)))
-    (format stream "POST ~A HTTP/1.0~AHost: ~A~AUser-Agent: simple HTTP for Common Lisp~AContent-Type: ~A~AContent-Length: ~D~A~A~A" url +crlf+ host +crlf+ +crlf+ content-type +crlf+ (length content) +crlf+ +crlf+ content)
+         (http-stream (open-stream host port))
+	 (stream http-stream))
+    (when debug?
+      (setf stream (make-broadcast-stream stream debug?)))
+    (format stream "POST ~A HTTP/1.0~AHost: ~A~AUser-Agent: simple HTTP for Common Lisp~A" url +crlf+ host +crlf+ +crlf+)
+    (when headers
+      (loop for (n . v) in headers do
+	   (format stream "~A: ~A~A" n v +crlf+)))
+    (format stream "Content-Type: ~A~AContent-Length: ~D~A~A~A" content-type +crlf+ (length content) +crlf+ +crlf+ content)
     (force-output stream)
     (list
-     (response-read-code stream)
-     (response-read-headers stream)
-     stream)))
+     (response-read-code http-stream)
+     (response-read-headers http-stream)
+     http-stream)))
 
 (defun http-resolve (url &key (http-method 'http-get)
 		     (signal-error? t) (verbose? nil))
