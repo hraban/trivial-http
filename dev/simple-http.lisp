@@ -15,7 +15,7 @@
 ;;; conditions
 ;;; ---------------------------------------------------------------------------
 
-(define-condition trivial-http-error ()
+(define-condition trivial-http-error (error)
   ())
 
 ;; from ASDF-Install
