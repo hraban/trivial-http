@@ -203,6 +203,7 @@ Returns \(as multiple values\) the number of elements downloaded
 		 (when o (close o :abort (null ok?))))))
 	(close stream)))))
 
+#+(or)
 (defun download-stream (stream destination &key expected-length)
   (let ((retrieved 0))
     (list
