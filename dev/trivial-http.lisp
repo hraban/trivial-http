@@ -1,4 +1,4 @@
-(in-package #:simple-http)
+(in-package #:trivial-http)
 
 ;;; ---------------------------------------------------------------------------
 ;;; constants

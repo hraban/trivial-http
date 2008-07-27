@@ -4,14 +4,14 @@ Author: Gary King
 See file COPYING for details
 |#
 
-(defpackage #:simple-http-test-system (:use #:cl #:asdf))
-(in-package #:simple-http-test-system)
+(defpackage #:trivial-http-test-system (:use #:cl #:asdf))
+(in-package #:trivial-http-test-system)
 
-(defsystem simple-http-test
+(defsystem trivial-http-test
   :author "Gary Warren King <gwking@metabang.com>"
   :maintainer "Gary Warren King <gwking@metabang.com>"
   :licence "MIT Style License"
-  :description "Tests for simple-http"
+  :description "Tests for trivial-http"
   :components ((:module 
 		"setup"
 		:pathname "tests/"
@@ -22,6 +22,6 @@ See file COPYING for details
 		"tests"
 		:depends-on ("setup")
 		:components ()))
-  :depends-on (:lift :simple-http))
+  :depends-on (:lift :trivial-http))
 
 

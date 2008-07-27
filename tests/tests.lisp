@@ -1,9 +1,9 @@
-(in-package #:simple-http-test)
+(in-package #:trivial-http-test)
 
-(deftestsuite simple-http-test ()
+(deftestsuite trivial-http-test ()
   ())
 
-(deftestsuite test-http-resolve (simple-http-test)
+(deftestsuite test-http-resolve (trivial-http-test)
   ())
 
 (addtest (test-http-resolve)

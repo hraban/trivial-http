@@ -1,7 +1,7 @@
-(in-package #:simple-http)
+(in-package #:trivial-http)
 
 (defvar *user-agent* 
-  "simple-http for Common Lisp")
+  "trivial-http for Common Lisp")
 
 (defvar *http-debug* nil)
 

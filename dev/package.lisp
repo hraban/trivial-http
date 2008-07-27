@@ -1,6 +1,6 @@
 (in-package #:common-lisp-user)
 
-(defpackage #:simple-http
+(defpackage #:trivial-http
   (:use #:cl #:usocket)
   (:nicknames #:shttp)
   (:export
@@ -30,7 +30,7 @@
    #:download-length-downloaded
    #:*user-agent*)
   (:documentation 
-   "simple-http is a simple networking library for doing HTTP POST 
-and GET over a socket interface. It establishes a package simple-HTTP, 
+   "trivial-http is a simple networking library for doing HTTP POST 
+and GET over a socket interface. It establishes a package trivial-http, 
 also called SHTTP, from which the following functions are exported: 
 http-get, http-post, escape-url-query and http-head."))

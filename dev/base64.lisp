@@ -1,4 +1,4 @@
-(in-package #:simple-http)
+(in-package #:trivial-http)
 
 ; This is from Juri Pakaste's <juri@iki.fi> base64.lisp
 (defparameter *encode-table*
