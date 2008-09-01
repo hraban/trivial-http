@@ -93,7 +93,7 @@
          (port (url-port url))
 	 (socket (socket-connect host port))
 	 (stream (socket-stream socket)))
-    (write-standard-headers "HEAD" url host stream)
+    (write-standard-headers "GET" url host stream)
     (list
      (response-read-code stream)
      (response-read-headers stream)
