@@ -183,9 +183,13 @@ Returns \(as multiple values\) the number of elements downloaded
 	   (let ((length (parse-integer 
 			  (or (header-value :content-length headers) "")
 			  :junk-allowed t))
-		 (total 0))
+		 )
 	     #+:clisp (setf (stream-element-type stream)
 			    '(unsigned-byte 8))
+	     (values
+	      (download-stream stream destination :expected-length length)
+	      actual-url)
+	     #+(or)
 	     (let ((ok? nil) (o nil))
 	       (unwind-protect
 		    (progn
@@ -203,23 +207,22 @@ Returns \(as multiple values\) the number of elements downloaded
 		 (when o (close o :abort (null ok?))))))
 	(close stream)))))
 
-#+(or)
 (defun download-stream (stream destination &key expected-length)
-  (let ((retrieved 0))
-    (list
-     (metatilities:with-output (out destination
-				    :direction :output :if-exists :supersede)
-       (unwind-protect
-	    (progn
-	      (copy-stream stream out)
-	      (when expected-length
-		(unless (= expected-length retrieved)
-		  (error 'mismatched-download-size-error
-			 :length-claimed expected-length
-			 :length-downloaded retrieved))))
-	 ;; cleanup
-	 (close stream)))
-     retrieved)))
+  (let ((ok? nil) (o nil) (retrieved 0))
+    (unwind-protect
+	 (progn
+	   (setf o (apply #'open destination
+			  :direction :output :if-exists :supersede
+			  (open-file-arguments)))
+	   (setf retrieved (copy-stream stream o))
+	   (when expected-length
+	     (unless (= expected-length retrieved)
+	       (error 'mismatched-download-size-error
+		      :length-claimed expected-length
+		      :length-downloaded retrieved)))
+	   (setf ok? t))
+      (when o (close o :abort (null ok?))))
+    retrieved))
 
 ;;; ---------------------------------------------------------------------------
 ;;; 'utilities'
