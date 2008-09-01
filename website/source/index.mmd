@@ -27,17 +27,17 @@ Until a few days ago, trivial-http was simple-http and
 simple-http was a fork of Brian Mastenbrook's trivial-http.
 Brian has kindly offered to let me continue the trivial
 tradition and so trivial-http is reborn ready to stumble
-forth again. It that adds several features and bug fixes and
+forth again. It  adds several features and bug fixes and
 works more the way I'd like it to. Where its functionality
 overlaps with Trivial-HTTP, it performs exactly the same.
 
 trivial-http has functions for
 
-* HTTP Get
-* HTTP Post
-* HTTP Head
-* HTTP Resolve - resolve 301 and 302 redirects
-* HTTP Download
+* [HTTP Get][http-get]
+* [HTTP Post][http-post]
+* [HTTP Head][http-head]
+* [HTTP Resolve][http-resolve] - resolve 301 and 302 redirects
+* [HTTP Download][http-download]
 
 {anchor mailing-lists}
 
@@ -56,11 +56,15 @@ grab the source code is:
     darcs get http://common-lisp.net/project/trivial-http
 
 trivial-http is also [ASDF-installable][asdf-install]. Its
-CLiki home is right [where][cliki] you'd expect. Finally,
-there is a also a handy [gzipped][gz] tar file.
+CLiki home is right [where][cliki-home] you'd expect. Finally,
+there is a also a handy [gzipped][tarball] tar file.
 
 
 ### What is happening {id news}
+
+2008-September-1 - Fixed horribly dumb bug wherein HTTP-GET
+was doing an HTTP HEAD! Added more tests and some very minor 
+restructuring
 
 2008-July-27 - Thanks to Brian Mastenbrook for letting me
 take the name. The other big news is that trivial-http is now
