@@ -15,7 +15,7 @@
   :author "Brian Mastenbrook and Gary King"
   :licence "MIT"
   :description "Simple support for HTTP GET, POST and more."
-  :version "1.2.1"
+  :version "1.3.0"
   :depends-on (:usocket)
   :components ((:module 
 		"dev"
