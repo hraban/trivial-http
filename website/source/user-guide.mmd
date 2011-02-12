@@ -1,6 +1,14 @@
-{include resources/header.md}
+{set-property html yes}
+{set-property author "Gary Warren King"}
+{set-property style-sheet user-guide}
 {set-property title "Trivial HTTP User's Guide"}
 {set-property docs-package trivial-http}
+
+<div id="header">
+{include navigation.md}
+</div>
+
+{include shared.md}
 
 # Trivial-HTTP User's Guide
 
@@ -41,4 +49,9 @@ and whistles, then you should seek out [Drakma][].
 
 <hr>
 
-{include resources/footer.md}
+<div id="footer">
+<span id="copyright"> Copyright (c) 2005 - 2011 Gary Warren King (gwking@metabang.com)</span> 
+<span id="license-note">metabang-bind has an MIT style license</span>
+<span id="timestamp">Last updated {today} at {now}</span>
+</div>
+

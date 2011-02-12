@@ -3,11 +3,8 @@
 <div class="contents">
 <div class="system-links">
 
-  * [Mailing Lists][3]
   * [Getting it][4]
-  * [Documentation][5]
   * [News][6]
-  * [Test results][tr]
   * [Changelog][7]
 
    [3]: #mailing-lists
@@ -23,13 +20,19 @@
 
 ### What it is
 
-Until a few days ago, trivial-http was simple-http and
-simple-http was a fork of Brian Mastenbrook's trivial-http.
-Brian has kindly offered to let me continue the trivial
-tradition and so trivial-http is reborn ready to stumble
-forth again. It  adds several features and bug fixes and
-works more the way I'd like it to. Where its functionality
-overlaps with Trivial-HTTP, it performs exactly the same.
+Note that like many of my Open Source projects, trivial-http
+does _not_ see much love. You're welcome to use and extend it
+and I'll try to support it but there are probably better 
+choices out there... 
+
+Until a few days (well, by now it's years...) ago,
+trivial-http was simple-http and simple-http was a fork of
+Brian Mastenbrook's trivial-http. Brian has kindly offered to
+let me continue the trivial tradition and so trivial-http is
+reborn ready to stumble forth again. It adds several features
+and bug fixes and works more the way I'd like it to. Where
+its functionality overlaps with what was trivial-http, it performs
+exactly the same. 
 
 trivial-http has functions for
 
@@ -39,21 +42,24 @@ trivial-http has functions for
 * [HTTP Resolve][http-resolve] - resolve 301 and 302 redirects
 * [HTTP Download][http-download]
 
+{remark
 {anchor mailing-lists}
 
 ### Mailing Lists
 
 * [trivial-http-devel][devel-list]: A list for questions,
   patches, bug reports, and so on.
+}
 
 {anchor downloads}
 
 ### Where it is {id downloads}
 
-A [darcs][] repository is available. The darcs command to
-grab the source code is:
+metabang.com is switching from [darcs][] to [git][] for
+source control; the current trivial-http repository is on
+[github][github-trivial-http] and you can clone it using:
 
-    darcs get http://common-lisp.net/project/trivial-http
+    git clone git://github.com/gwkkwg/trivial-http
 
 trivial-http is also [ASDF-installable][asdf-install]. Its
 CLiki home is right [where][cliki-home] you'd expect. Finally,
@@ -61,6 +67,8 @@ there is a also a handy [gzipped][tarball] tar file.
 
 
 ### What is happening {id news}
+
+2011-02-12 - Moved to github
 
 2008-September-1 - Fixed horribly dumb bug wherein HTTP-GET
 was doing an HTTP HEAD! Added more tests and some very minor 

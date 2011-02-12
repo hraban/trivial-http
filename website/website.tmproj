@@ -10,11 +10,13 @@
 			<key>filename</key>
 			<string>source/index.mmd</string>
 			<key>lastUsed</key>
-			<date>2008-09-01T15:59:16Z</date>
+			<date>2011-02-12T15:59:05Z</date>
 		</dict>
 		<dict>
 			<key>filename</key>
 			<string>source/user-guide.mmd</string>
+			<key>lastUsed</key>
+			<date>2011-02-12T15:59:13Z</date>
 		</dict>
 		<dict>
 			<key>expanded</key>
@@ -36,14 +38,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>41</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>59</integer>
+				<integer>54</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>37</integer>
+			<integer>0</integer>
 		</dict>
 		<key>source/resources/footer.md</key>
 		<dict>
@@ -64,9 +66,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>33</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>12</integer>
+				<integer>22</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+		</dict>
+		<key>source/user-guide.mmd</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>0</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -77,12 +93,13 @@
 	<key>openDocuments</key>
 	<array>
 		<string>source/resources/header.md</string>
+		<string>source/user-guide.mmd</string>
 		<string>source/index.mmd</string>
 		<string>source/resources/footer.md</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{350, 45}, {578, 788}}</string>
+	<string>{{350, 0}, {578, 778}}</string>
 </dict>
 </plist>
