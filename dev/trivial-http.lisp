@@ -169,7 +169,7 @@ for closing the HTTP stream."
 	(unless signal-error?
 	  (return-from handler (list nil nil nil nil)))))))
 
-(defun http-download (url destination &key (signal-error? t))
+(defun http-download (url destination &key (signal-error? t) (if-exists :supersede))
   "Resolves `url` using http-resolve and downloads the contents of the 
 stream it to `destination`. Destination is assumed to be a file. 
 Returns \(as multiple values\) the number of elements downloaded 
@@ -187,14 +187,14 @@ Returns \(as multiple values\) the number of elements downloaded
 	     #+:clisp (setf (stream-element-type stream)
 			    '(unsigned-byte 8))
 	     (values
-	      (download-stream stream destination :expected-length length)
+	      (download-stream stream destination :expected-length length :if-exists if-exists)
 	      actual-url)
 	     #+(or)
 	     (let ((ok? nil) (o nil))
 	       (unwind-protect
 		    (progn
 		      (setf o (apply #'open destination
-				     :direction :output :if-exists :supersede
+				     :direction :output :if-exists if-exists
 				     (open-file-arguments)))
 		      (setf total (copy-stream stream o))
 		      (when length
@@ -207,12 +207,12 @@ Returns \(as multiple values\) the number of elements downloaded
 		 (when o (close o :abort (null ok?))))))
 	(close stream)))))
 
-(defun download-stream (stream destination &key expected-length)
+(defun download-stream (stream destination &key expected-length (if-exists :supersede))
   (let ((ok? nil) (o nil) (retrieved 0))
     (unwind-protect
 	 (progn
 	   (setf o (apply #'open destination
-			  :direction :output :if-exists :supersede
+			  :direction :output :if-exists if-exists
 			  (open-file-arguments)))
 	   (setf retrieved (copy-stream stream o))
 	   (when expected-length
